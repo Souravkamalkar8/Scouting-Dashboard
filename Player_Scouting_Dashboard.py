@@ -16,26 +16,25 @@ font_regular = FontManager(("https://github.com/googlefonts/rubik/blob/main/font
 font_bold = FontManager(("https://github.com/googlefonts/rubik/blob/main/fonts/ttf/Rubik-Bold.ttf?raw=true"))
 
 #Loading the files. 
-df= pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Scouting Dashboards\New Positions.xlsx')
-df=df.drop(['Unnamed: 0'], axis=1)
+df=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJj4AGUbgivmk97VuyKh930RsJj73mKrvYEMCMyQSZD4B8ZXSsE2luVHGpi_SovSkiIkwhSFcB0I3V/pub?gid=1192983856&single=true&output=csv')
+standard=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSvpLX4C_XPuAowHS9qQuhfY6cdAcOKW0QUK_n0pVqFCPuyXa3bKdxlejpyGAmg9j6yUpUHpFzZU0x9/pub?gid=1674956316&single=true&output=csv')
+passing= pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSp9baBbmntRr9gVCSrpCrwjJkQIIyD1-m61xm_tZnBrXeCDV2txiHs9YuIaTvrJw/pub?gid=1839356204&single=true&output=csv')
+pass_types= pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTt-FtJb8qnmwcXUSsphI-Kg9HqZYhI1H6NLKPN4xY5jGYfIvb96BD_zl6Xh0A_LeZ1EIOe8nMtBb8S/pub?gid=847414082&single=true&output=csv')
+sca= pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTdzGrNxOFnenlG4ws9I9Ll4KRilrr4TcTEKvqJUDG30KBXfn1qa2j5MFvCHiM8XUISchcVBgvG2S5Q/pub?gid=1301766462&single=true&output=csv')
+dfa= pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTnqfWVkyxDwc9BefQK5pnQvNAAh7I69_SXrl6Fty68f_P7u84bnKvtNJaIzwlnS4G4DDJux5_MGHXs/pub?gid=977595461&single=true&output=csv')
+poss=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQaeL7--7aoBkdXMHzJhJLcrd9jths9KPV4B4G8IXKNfRecrUUKx_wCRnPDDqMES_vtDxWAgH1ISbm_/pub?gid=394498778&single=true&output=csv')
+Misc=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vREVH3BhIYWTBLiCiIA79XrKthzPAZLMxtSW8l6WPjW64UtK5w4f6rO3sw6kB0J9hoYTND_AdTQAFR6/pub?gid=864059211&single=true&output=csv')
+shooting=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTFzS1reLqaAguoKsY0ce1-DV0Ogs2-EvihAwd11JxfcydjSTC8LSBJXm4D12zWvLSLfXzBxzAe9R-Y/pub?gid=2010219322&single=true&output=csv')
 df=df[df['New Positions']!='Goalkeeper']
+df=df.drop(['Unnamed: 0'], axis=1)
 df=df.reset_index(drop=True)
-standard=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Standard.xls')
-passing=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Passing .xls')
-pass_types=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Pass Types.xls')
-sca=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\SCA.xls')
-dfa=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Defensive Actions.xls')
-poss=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Possession.xls')
-Misc=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Misc.xls')
 standard=standard[['Player','Squad','npxG','xA']]
-shooting=pd.read_excel(r'C:\Users\hp\Desktop\Cadiz\Shooting.xls')
 shooting=shooting[['Player','Squad','Sh']]
 passing=passing[['Player','Squad','TAtt','TCmp%','LAtt', 'LCmp%','KP', 'Final3rd', 'PPA','Prog' ]]
 pass_types=pass_types[['Player','Squad','Sw','Press']]
 poss=poss[['Player', 'Squad','DAtt','CProg','C3rd','CCPA']]
 dfa=dfa[['Player','Squad','TklW','Int','Blocks','Clr','Succ']]
 dfa['Blocks + Clearances']= dfa['Blocks']+dfa['Clr']
-
 Misc=Misc[['Player', 'Squad','Recov','Won']]
 sca=sca[['Player','Squad','SCA90']]
 df= pd.merge(df,standard, on=['Player','Squad'],how='left')
@@ -46,6 +45,10 @@ df= pd.merge(df,poss, on=['Player','Squad'],how='left')
 df= pd.merge(df,Misc, on=['Player','Squad'],how='left')
 df= pd.merge(df,shooting, on=['Player','Squad'],how='left')
 df= pd.merge(df,passing, on=['Player','Squad'],how='left')
+DA= df[['Player','TklW','Succ','Int','Recov','Won','Blocks + Clearances']]
+GCC= df[['Player','npxG','xA','Sh','DAtt', 'SCA90','KP']]
+BP= df[['Player','Prog','CProg','Final3rd','C3rd','PPA','CCPA' ]]
+BD=df[['Player','TAtt','TCmp%','LAtt','LCmp%','Sw','Press']]
 
 import streamlit as st
 
