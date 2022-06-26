@@ -140,7 +140,7 @@ def scouting_bar(player):
     ax2.spines['top'].set_linewidth(1)
 
     ax2.text(51, -0.57, "Median", color="black", size="28", weight="normal")
-    ax2.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
+    ax2.text(50, -1.4, "Percentile", color="black", size="32.5", weight="normal")
     ax2.text(-40.5, -2.50, "*npxG: Non-Penalty Expected Goals, xA:Expected Assists, SCA: Shot Creating Actions",
              color="black", size="33", weight="normal")
 
@@ -194,7 +194,7 @@ def scouting_bar(player):
     ax3.spines['top'].set_linewidth(1)
 
     ax3.text(51, -0.57, "Median", color="black", size="28", weight="normal")
-    ax3.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
+    ax3.text(50, -1.4, "Percentile", color="black", size="32.5", weight="normal")
 
     # For Ball Progression & Build Up
     ax4 = fig.add_subplot(gs[10:, 0:5])
@@ -246,7 +246,7 @@ def scouting_bar(player):
     ax4.spines['top'].set_linewidth(1)
 
     ax4.text(51, -0.57, "Median", color="black", size="28", weight="normal")
-    ax4.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
+    ax4.text(50, -1.4, "Percentile", color="black", size="32.5", weight="normal")
     ax4.text(-40.5, -2.50, "*PA:Penalty Area", color="black", size="33", weight="normal")
 
     # For Passing & Ball Distribution
@@ -299,12 +299,12 @@ def scouting_bar(player):
     ax5.spines['top'].set_linewidth(1)
 
     ax5.text(51, -0.57, "Median", color="black", size="28", weight="normal")
-    ax5.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
+    ax5.text(50, -1.4, "Percentile", color="black", size="32.5", weight="normal")
 
     # For the Name, Minutes Played, Team
     ax1 = fig.add_subplot(gs[0:3, :])
     # You can either create a HighlightText object
-    HighlightText(x=0.35, y=0.80,
+    HighlightText(x=0.30, y=0.80,
                   s=f"<{df['Player'][j].upper()} >" + ' <21-22 SEASON>',
                   highlight_textprops=[{"color": 'blue', 'size': 80},
                                        {"color": 'black', 'size': 80}], fontproperties=font_bold.prop,
