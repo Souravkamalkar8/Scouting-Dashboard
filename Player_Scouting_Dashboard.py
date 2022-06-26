@@ -141,7 +141,7 @@ def scouting_bar(player):
 
     ax2.text(51, -0.57, "Median", color="black", size="28", weight="normal")
     ax2.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
-    ax2.text(-2.5, -2.00, "*npxG: Non-Penalty Expected Goals, xA:Expected Assists, SCA: Shot Creating Actions",
+    ax2.text(-40.5, -2.50, "*npxG: Non-Penalty Expected Goals, xA:Expected Assists, SCA: Shot Creating Actions",
              color="black", size="33", weight="normal")
 
     # For Defensive Ability
@@ -247,7 +247,7 @@ def scouting_bar(player):
 
     ax4.text(51, -0.57, "Median", color="black", size="28", weight="normal")
     ax4.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
-    ax4.text(-2.5, -2.00, "*PA:Penalty Area", color="black", size="33", weight="normal")
+    ax4.text(-40.5, -2.50, "*PA:Penalty Area", color="black", size="33", weight="normal")
 
     # For Passing & Ball Distribution
     ax5 = fig.add_subplot(gs[10:, 8:])
