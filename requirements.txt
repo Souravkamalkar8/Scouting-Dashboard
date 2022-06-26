@@ -119,7 +119,6 @@ pyarrow==8.0.0
 
 pycosat==0.6.3
 
-pycurl==7.45.1
 
 Pympler==1.0.1
 
