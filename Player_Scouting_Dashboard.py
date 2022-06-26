@@ -69,7 +69,6 @@ GCC= df[['Player','npxG','xA','Sh','DAtt', 'SCA90','KP']]
 BP= df[['Player','Prog','CProg','Final3rd','C3rd','PPA','CCPA' ]]
 BD=df[['Player','TAtt','TCmp%','LAtt','LCmp%','Sw','Press']]
 
-
 def scouting_bar(player):
     # def scouting_bar(competition,team,position,player)
     # select=[competition,team,position,player]
@@ -89,11 +88,11 @@ def scouting_bar(player):
             continue
 
     # set up gridspec figure
-    fig = plt.figure(figsize=(55, 50), constrained_layout=True)
-    gs = fig.add_gridspec(nrows=10, ncols=11)
+    fig = plt.figure(figsize=(58.5, 58.5), constrained_layout=True)
+    gs = fig.add_gridspec(nrows=13, ncols=13)
 
     # For Goal Contribution & Creativity
-    ax2 = fig.add_subplot(gs[3:6, 0:5])
+    ax2 = fig.add_subplot(gs[5:8, 0:5])
     df1 = pd.DataFrame({'Attributes': ['npxG', 'xA', 'Shots', 'Att. Dribbles', 'SCA', 'Key Passes'],
                         'Percentile': [round(stats.percentileofscore(GCC['npxG'], GCC['npxG'][j])),
                                        round(stats.percentileofscore(GCC['xA'], GCC['xA'][j])),
@@ -146,7 +145,7 @@ def scouting_bar(player):
              color="black", size="33", weight="normal")
 
     # For Defensive Ability
-    ax3 = fig.add_subplot(gs[3:6, 6:])
+    ax3 = fig.add_subplot(gs[5:8, 8:])
     df2 = pd.DataFrame({'Attributes': ['Succ. Tackles', 'Pressure Regains', 'Interceptions', 'Recoveries',
                                        'Aerials Won', 'Blocks + \n Clearances'],
                         'Percentile': [round(stats.percentileofscore(DA['TklW'], DA['TklW'][j])),
@@ -198,7 +197,7 @@ def scouting_bar(player):
     ax3.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
 
     # For Ball Progression & Build Up
-    ax4 = fig.add_subplot(gs[7:, 0:5])
+    ax4 = fig.add_subplot(gs[10:, 0:5])
     df3 = pd.DataFrame({'Attributes': ['Progressive Passes', 'Progressive Carries', 'Final third \n Passes',
                                        'Final third \n carries', 'Passes into \nPA', 'Carries into\nPA'],
                         'Percentile': [round(stats.percentileofscore(BP['Prog'], BP['Prog'][j])),
@@ -251,7 +250,7 @@ def scouting_bar(player):
     ax4.text(-2.5, -2.00, "*PA:Penalty Area", color="black", size="33", weight="normal")
 
     # For Passing & Ball Distribution
-    ax5 = fig.add_subplot(gs[7:, 6:])
+    ax5 = fig.add_subplot(gs[10:, 8:])
     df4 = pd.DataFrame({'Attributes': ['Attempted Passes', 'Pass Completion %', 'Att. Long Balls',
                                        'Long Ball Succ. Rate', 'Switch Passes', 'Passes Under Pressure'],
                         'Percentile': [round(stats.percentileofscore(BD['TAtt'], BD['TAtt'][j])),
@@ -303,9 +302,9 @@ def scouting_bar(player):
     ax5.text(50, -1.4, "Percentile", color="black", size="33", weight="normal")
 
     # For the Name, Minutes Played, Team
-    ax1 = fig.add_subplot(gs[0:2, :])
+    ax1 = fig.add_subplot(gs[0:3, :])
     # You can either create a HighlightText object
-    HighlightText(x=0.25, y=0.80,
+    HighlightText(x=0.35, y=0.80,
                   s=f"<{df['Player'][j].upper()} >" + ' <21-22 SEASON>',
                   highlight_textprops=[{"color": 'blue', 'size': 80},
                                        {"color": 'black', 'size': 80}], fontproperties=font_bold.prop,
@@ -366,23 +365,25 @@ def scouting_bar(player):
 
     rect = plt.Rectangle(
         # (lower-left corner), width, height
-        (-0.02, -0.02), 1.05, 0.8, fill=False, color="k", lw=2,
+        (0.0, 0.05), 0.95, 0.6, fill=False, color="k", lw=2,
         zorder=1000, transform=fig.transFigure, figure=fig
     )
     rect1 = plt.Rectangle(
         # (lower-left corner), width, height
-        (-0.02, -0.02), 1.05, 0.4, fill=False, color="k", lw=2,
+        (0.0, 0.05), 0.95, 0.3, fill=False, color="k", lw=2,
         zorder=1000, transform=fig.transFigure, figure=fig
     )
 
     rect2 = plt.Rectangle(
         # (lower-left corner), width, height
-        (-0.02, -0.02), 0.525, 0.8, fill=False, color="k", lw=2,
+        (0.0, 0.05), 0.475, 0.6, fill=False, color="k", lw=2,
         zorder=1000, transform=fig.transFigure, figure=fig
     )
+    
     fig.patches.extend([rect])
     fig.patches.extend([rect1])
     fig.patches.extend([rect2])
+
 
 
 import streamlit as st
