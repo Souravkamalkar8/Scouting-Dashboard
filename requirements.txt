@@ -30,7 +30,7 @@ colorspacious==1.1.2
 commonmark==0.9.1
 comtypes==1.1.10
 
-conda-build==3.21.9
+
 
 conda-verify==3.4.2
 configparser==5.0.2
