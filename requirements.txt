@@ -64,8 +64,6 @@ gitdb==4.0.9
 GitPython==3.1.27
 
 
-h5py==2.10.0
-
 highlight-text==0.2
 
 inflect==5.3.0
