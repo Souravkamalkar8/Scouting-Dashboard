@@ -24,7 +24,6 @@ bs4==0.0.1
 cachetools==5.2.0
 cashier==1.3
 
-clyent==1.2.2
 cmasher==1.6.2
 
 colorspacious==1.1.2
